@@ -32,4 +32,16 @@ done
 eval "$(ssh-agent -s)"
 ssh-add ~/.ssh/github
 # push the changes to git
-git push -u origin main
+while true;
+do
+    read -p "Do you want to push (p) or pull (s) the repository?  " ps && echo
+    case $ps in
+	# push changes to git
+	[Pp]* ) git push -u origin main;
+		break;;
+	# pull changes from git
+	[Ss]* ) git pull -u origin main;
+		break;;
+	* ) echo You entered an invalid answer, please only us P, p, S, s
+    esac
+done
