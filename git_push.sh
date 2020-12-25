@@ -40,7 +40,6 @@ do
 done
 # add the key to ssh-agent
 eval "$(ssh-agent -s)"
-ssh-add ~/.ssh/github
-echo $ssh_pwd
+ssh-add ~/.ssh/github $ssh_pwd
 # push the changes to git
 git push -u origin main
