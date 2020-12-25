@@ -8,7 +8,9 @@ while true;
 do
     read -p "Do you use a passphrase with your private key? [y/n]:  " yn && echo
     case $yn in
-	[Yy]* ) read -s -p "Please enter the password of your private key:  " ssh_pwd && echo; break;;
+	[Yy]* ) read -s -p "Please enter the password of your private key:  " ssh_pwd && echo;
+		export ssh_pwd;
+		break;;
 	[Nn]* ) break;;
 	* ) echo You entered an invalid answer, please only use y,Y,n,N
     esac
@@ -21,7 +23,7 @@ do
     case $csp in
 	# new repository
 	[Cc]* ) echo "# $repo_name" >> README.md;
-		cp -p ~/Github/LICENSE.md ~/Github/$local_repo_directory/LICENSE.md;
+		cp -p ~/Github/LICENSE.md ~/Github/$local_repo_directory/LICENSE;
 		git init;
 		git add .;
 		git commit -a;
@@ -40,6 +42,6 @@ do
 done
 # add the key to ssh-agent
 eval "$(ssh-agent -s)"
-ssh-add ~/.ssh/github printf "$ssh_pwd"
+ssh_pwd -e ssh-add ~/.ssh/github
 # push the changes to git
 git push -u origin main
