@@ -9,7 +9,7 @@ do
     read -p "Do you use a passphrase with your private key? [y/n]:  " yn && echo
     case $yn in
 	[Yy]* ) read -s -p "Please enter the password of your private key:  " ssh_pwd && echo;
-		export ssh_pwd;
+		export $ssh_pwd;
 		break;;
 	[Nn]* ) break;;
 	* ) echo You entered an invalid answer, please only use y,Y,n,N
@@ -42,6 +42,6 @@ do
 done
 # add the key to ssh-agent
 eval "$(ssh-agent -s)"
-ssh_pwd -e ssh-add ~/.ssh/github
+$ssh_pwd -e ssh-add ~/.ssh/github
 # push the changes to git
 git push -u origin main
