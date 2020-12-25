@@ -26,9 +26,7 @@ do
 	[Pp]* ) git commit -a;
 		break;;
 	# pull updates
-	[Rr]* ) git add .;
-		git commit -a;
-		break;;
+	[Rr]* ) break;;
 	* ) echo You entered an invalid answer, please only use N, n, S, s, P, p
     esac
 done
