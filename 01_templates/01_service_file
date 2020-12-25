@@ -1,0 +1,81 @@
+# systemwide: /etc/systemd/system/new_service.service
+# userlevel: ~/.config/systemd/user/new_service.service
+
+[UNIT]
+Description=name_of_the_new_service
+After=network.target
+
+[Service]
+Type=simple
+# another type: forking
+User=user_name
+WorkingDirectory=/home/user_name
+ExecStart=/home/user_name/new_service --option=<option>
+# restart options: on-failure | always | on-abort | etc
+Restart=on-failure
+
+# the install section is needed to use 'systemctl enable' and start automatically
+# 'default.target' for user level
+# 'multi-user.target' for system level
+[Install]
+WantedBy=multi-user.target
+
+# read all the service options
+# man systemd.service
+
+# activate the service on boot as root | system level
+# systemctl enable new_service
+
+# activate the service on boot as user | user level
+# systemctl --user enable new_service
+
+# deactivate the service on boot as root | system level
+# systemctl disable new_service
+
+# deactivate the service on boot as user | user level
+# systemctl --user disable new_service
+
+# start the service as root | system level
+# systemctl start new_service
+
+# start the service as user | user level
+# systemctl --user start new_service
+
+# stop the service as root | system level
+# systemctl stop new_service
+
+# stop the service as user | user level
+# systemctl --user stop new_service
+
+# reload the service as root | system level
+# systemctl daemon-reload | run if service file has changed
+
+# restart the service as root | system level
+# systemctl restart new_service
+
+# restart the service as user | user level
+# systemctl --user restart new_service
+
+# status check [ running | uptime | latest logs ]
+# as root: systemctl status | all services
+# as root: systemctl status service | specific service
+
+# status check [ running | uptime | latest logs ]
+# as user: sudo systemctl status | all services
+# as user: sudo systemctl status service | specific service
+# as user: systemctl --user status service | user service
+
+# to check the journalctl-logs the user must be member of the systemd-journal group
+
+# see all systemd logs
+as root: journalctl
+as user: sudo journalctl
+
+# tail logs
+# as root: journalctl -f
+# as user: sudo journalctl -f
+
+# show logs for specific service
+# as root: journalctl -u new_service
+# as user: sudo journalctl -u new_service
+# as user: journalctl --user-unit new_service
