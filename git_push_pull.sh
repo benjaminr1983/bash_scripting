@@ -18,7 +18,6 @@ fi
 	case $cspr in
 	    # new repository
 	    [Cc]* ) echo "# $repo_name" >> README.md;
-		    cp -p ~/GitHub/license.md ~/GitHub/$local_repo_directory/LICENSE;
 		    git init;
 		    git add .;
 		    git commit -a;
