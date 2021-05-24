@@ -1,0 +1,62 @@
+"        _
+"__    _(_)_  __ __  _ __ ___
+"\ \  / / | '_  `_ \| '__/ __|
+" \ \/ /| | | | | | | | | (__
+"  \__/ |_|_| |_| |_|_|  \___|
+
+" PUGINS
+"
+"VUNDLE
+"
+set nocompatible
+filetype off
+" this is necessary in order for Vundle to work
+"
+"runtime
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" Vundle manages vundle
+Plugin 'VundleVim/Vundle.vim'
+" NERDTree
+Plugin 'preservim/nerdtree'
+" auto-pairs
+Plugin 'jiangmiao/auto-pairs'
+" auto_completion
+Plugin 'ycm-core/YouCompleteMe'
+
+" all Plugins are loaded
+call vundle#end()
+" BASIC Settings
+"
+" syntax_highlighting
+:syntax enable
+" set_numbering
+:set number
+" auto_indent
+:filetype plugin indent on
+" encoding
+:set encoding=utf-8
+" command_line_auto_completion
+:set wildmenu
+:set wildmode=list:longest,full
+" search
+:set incsearch
+:set hlsearch
+" bracket_highlighting
+:set showmatch
+
+" ORG_mode
+"
+" activate
+:packloadall
+:silent! helptags ALL
+
+" NERDTree
+"
+" start with file
+:autocmd StdinReadPre * let s:std_in=1
+:autocmd VimEnter * NERDTree | if argc() > 0 || exists("s:std_in") | wincmd p | endif
+" close vim
+:autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() |
+    \ quit | endif
+
