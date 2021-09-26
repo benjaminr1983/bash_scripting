@@ -8,7 +8,7 @@
 git_user=$(git config user.name)
 echo
 read -p "Please enter the local folder for the repository:  " local_repo_directory && echo
-cd ~/GitHub/$local_repo_directory/
+cd ~/git_hub_projects/$local_repo_directory/
 read -p "Please enter the repository:  " repo_name && echo
 read -p "Please enter the branch, a standard this is 'main' should you want to keep it just press 'enter':  " branch_name && echo
 if [[ $branch_name = "" ]];
