@@ -19,7 +19,7 @@ else
 fi
     while true;
     do
-	read -p "Do you want to create a new repository or branch, switch an older repository to ssh or simply push changes in the current repository? [c/s/p/r]:  " cspr && echo
+	read -p "Do you want to (c)reate a new repository or branch, (s)witch an older repository to ssh or simply (p)ush or (r)pull changes in the current repository? [c/s/p/r]:  " cspr && echo
 	case $cspr in
 	    # new repository
 	    [Cc]* ) echo "# $repo_name" >> README.md;
@@ -58,3 +58,5 @@ fi
 	    * ) echo You entered an invalid answer, please only us P, p, S, s
 	esac
     done
+# kill the  ssh-agent
+    trap 'kill $SSH_AGENT_PID' EXIT
