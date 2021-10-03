@@ -22,3 +22,4 @@ function progressbar {
 }
 echo -en "\r"
 progressbar $1 $2
+1
