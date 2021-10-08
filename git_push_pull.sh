@@ -1,9 +1,11 @@
 #!/bin/bash
+#----------------------------------------------------------------------------------------------------------------------#
 # script_name: git_pull/git_push
 # script_version: 0.1
 # script_author: Benjamin Reinicke
 # script_date: 27.12.2020
 # script_license: GPL-2.0
+#----------------------------------------------------------------------------------------------------------------------#
 # request the variables
 git_user=$(git config user.name)
 echo
