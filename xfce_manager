@@ -5,20 +5,18 @@
 case $1 in
 firefox)        wmctrl -s 0
                 /usr/bin/firefox;;
-chrome)         wmctrl -s 0
-                /usr/bin/chromium;;
+brave)          wmctrl -s 0
+                /usr/bin/brave;;
 term)           wmctrl -s 1
-                /usr/bin/terminator;;
-virtual_studio) wmctrl -s 1
-                /usr/bin/vscodium;;
+                /usr/bin/alacritty;;
 virtual_box)    wmctrl -s 1
                 /usr/bin/virtualbox;;
-emacsclient)    wmctrl -s 1
-                /usr/bin/emacsclient;;
 signal)         wmctrl -s 2
                 /usr/bin/signal-desktop;;
 thunderbird)    wmctrl -s 2
                 /usr/bin/thunderbird;;
+spotify)        wmctrl -s 2
+		/usr/bin/spotify;;
 thunar)         wmctrl -s 3
                 /usr/bin/thunar;;
 esac
